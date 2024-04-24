@@ -8,7 +8,6 @@ class GardenaLocationFactory {
     for (final locationJson in json) {
       locations.add(GardenaLocationFactory.locationFromJson(locationJson));
     }
-    print(json);
     return locations;
   }
 

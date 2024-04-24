@@ -1,3 +1,4 @@
+import 'package:gardena_stats_pusher/logger.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:gardena_stats_pusher/api_clients/prometheus/prometheus_api_data_provider.dart';
@@ -29,7 +30,7 @@ class PrometheusMetricsClient {
       },
       body: body,
     );
-    print('Metrics response: ${response.statusCode} ${response.body}');
+    logger.debug('Metrics response: ${response.statusCode} ${response.body}');
   }
 }
 

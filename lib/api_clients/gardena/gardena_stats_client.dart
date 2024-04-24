@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:gardena_stats_pusher/api_clients/gardena/gardena_api_data_provider.dart';
 import 'package:gardena_stats_pusher/factories/device_factory.dart';
 import 'package:gardena_stats_pusher/factories/location_factory.dart';
+import 'package:gardena_stats_pusher/logger.dart';
 import 'package:gardena_stats_pusher/models/gardena_location.dart';
 import 'package:http/http.dart' as http;
 
@@ -54,8 +55,9 @@ class GardenaStatsClient {
 
     final body = json.decode(response.body);
     final data = body['data'];
-    final location = GardenaLocationFactory.locationsFromJson(data);
-    return location;
+    final locations = GardenaLocationFactory.locationsFromJson(data);
+    logger.info('Got Gardena locations: $locations');
+    return locations;
   }
 
   Future<List<Device>> getDevices(GardenaLocation location) async {
@@ -72,7 +74,12 @@ class GardenaStatsClient {
     );
 
     final body = json.decode(response.body);
-    return _getAllDevices(body);
+    final devices = _getAllDevices(body);
+
+    final devicesNames = devices.map((device) => device.name).join(',');
+    logger.info('Found Gardena Devices: $devicesNames');
+
+    return devices;
   }
 
   List<Device> _getAllDevices(Map<String, dynamic> jsonData) {

@@ -1,10 +1,13 @@
 import 'dart:io';
 
 import 'package:gardena_stats_pusher/api_clients/prometheus/prometheus_metrics_client.dart';
+import 'package:gardena_stats_pusher/logger.dart';
 import 'package:gardena_stats_pusher/models/device.dart';
 
 class PrometheusService {
   Future<void> sendMetrics({required List<Device> forDevices}) async {
+    logger.info('Sending metrics to Prometheus...');
+
     final url = Platform.environment['GRAFANA_PROM_REMOTE_WRITE_URL'];
     final username = Platform.environment['GRAFANA_PROM_USERNAME'];
     final token = Platform.environment['GRAFANA_PROM_TOKEN'];
