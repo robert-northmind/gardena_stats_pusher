@@ -15,5 +15,6 @@ void main() async {
   } catch (error) {
     print('Error: $error');
     logger.error('Failed to send metrics with: $error');
+    rethrow;
   }
 }
