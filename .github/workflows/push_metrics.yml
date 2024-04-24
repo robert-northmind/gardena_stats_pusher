@@ -26,4 +26,9 @@ jobs:
           GRAFANA_LOKI_USERNAME: ${{ secrets.GRAFANA_LOKI_USERNAME }}
           GRAFANA_LOKI_TOKEN: ${{ secrets.GRAFANA_LOKI_TOKEN }}
           GRAFANA_LOKI_URL: ${{ secrets.GRAFANA_LOKI_URL }}
+          GRAFANA_PROM_USERNAME: ${{ secrets.GRAFANA_PROM_USERNAME }}
+          GRAFANA_PROM_TOKEN: ${{ secrets.GRAFANA_PROM_TOKEN }}
+          GRAFANA_PROM_REMOTE_WRITE_URL: ${{ secrets.GRAFANA_PROM_REMOTE_WRITE_URL }}
+          GARDENA_CLIENT_ID: ${{ secrets.GARDENA_CLIENT_ID }}
+          GARDENA_CLIENT_SECRET: ${{ secrets.GARDENA_CLIENT_SECRET }}
         run: dart run
