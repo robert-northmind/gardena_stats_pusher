@@ -3,7 +3,7 @@ import 'package:gardena_stats_pusher/logger.dart';
 import 'package:gardena_stats_pusher/services/prometheus_service.dart';
 
 void main() async {
-  logger.info('Starting up Gardena Stats Pusher...');
+  logger.info('Starting up Gardena Stats Pusher.');
 
   try {
     final gardenaStatClient = GardenaStatsClient();
