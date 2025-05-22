@@ -6,12 +6,18 @@ on:
   pull_request:
     branches: ["main"]
 
+# Restrict permissions to the minimum required
+permissions:
+  contents: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v3
+        with:
+          persist-credentials: false
 
       # Note: This workflow uses the latest stable version of the Dart SDK.
       # You can specify other versions if desired, see documentation here:
